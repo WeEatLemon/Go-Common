@@ -13,6 +13,18 @@ type Data struct {
 	Offset    int `json:"-"`
 }
 
+func GetPageParamsNotC(Page, PageSize int) *Data {
+	params := Data{}
+	if Page <= 0 {
+		params.Page = 1
+	}
+	if PageSize <= 0 {
+		params.PageSize = 10
+	}
+	params.Offset = (params.Page - 1) * params.PageSize
+	return &params
+}
+
 func GetPageParams(c *gin.Context) *Data {
 	var params Data
 	_ = c.BindQuery(&params)

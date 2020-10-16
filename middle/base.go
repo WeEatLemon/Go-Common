@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	KeyLanguage = "lan"
+	KeyLanguage = "language"
 	KeyPlatform = "platform"
 )
 

@@ -66,6 +66,9 @@ func (r *Resp) GetMsg(b *Elem) (response gin.H) {
 		b.Code = Success
 	}
 	msg := r.GetMsgStr(b.Code)
+	if b.Msg != "" {
+		msg += " | " + b.Msg
+	}
 	return gin.H{"code": b.Code, "message": msg, "data": b.Data}
 }
 

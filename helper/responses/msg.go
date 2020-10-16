@@ -1,13 +1,9 @@
 package resp
 
 import (
+	"github.com/IEatLemons/GoHelper/language"
 	"github.com/gin-gonic/gin"
 	"net/http"
-)
-
-var (
-	EnLan   = "en"
-	ZhCnLan = "zhCn"
 )
 
 var RESP *Resp
@@ -22,7 +18,7 @@ func NewResp() *Resp {
 
 func InitResp(lan string) *Resp {
 	if lan == "" {
-		lan = EnLan
+		lan = language.EnLan
 	}
 	RESP = &Resp{lan: lan}
 	return RESP
@@ -43,6 +39,7 @@ const (
 	FrequencyTooFast  = 10006
 	DataAlreadyExists = 10007
 	DataDoesNotExist  = 10008
+	UntrustedSource   = 10009
 
 	// 用户
 	UserExists    = 60000
@@ -87,7 +84,7 @@ func (r *Resp) ServerErrRep(c *gin.Context, b *Elem) {
 func (r *Resp) GetMsgStr(Code int) (msg string) {
 	var exist bool
 	switch r.lan {
-	case ZhCnLan:
+	case language.ZhCnLan:
 		msg, exist = ZhCn[Code]
 		if !exist {
 			msg = ZhCn[UnknownError]

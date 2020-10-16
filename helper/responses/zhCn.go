@@ -12,6 +12,7 @@ var ZhCn = subMsgType{
 	FrequencyTooFast:  "频率过快",
 	DataAlreadyExists: "数据已存在",
 	DataDoesNotExist:  "数据不存在",
+	UntrustedSource:   "不信任来源",
 
 	//用户
 	UserExists:    "用户已存在",

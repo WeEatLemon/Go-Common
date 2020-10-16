@@ -12,6 +12,7 @@ var En = subMsgType{
 	FrequencyTooFast:  "Frequency too fast",
 	DataAlreadyExists: "Data already exists",
 	DataDoesNotExist:  "Data does not exist",
+	UntrustedSource:   "Untrusted Source",
 
 	//用户
 	UserExists:    "User already exists",

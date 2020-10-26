@@ -1,3 +1,5 @@
+github.com/RMIO2020/Go-Common v0.0.0-20201015032636-470bca812b00 h1:a4b00rmT3dmuLZivUfvMIPUo+66PouMJSUR2CtcAUS4=
+github.com/RMIO2020/Go-Common v0.0.0-20201015032636-470bca812b00/go.mod h1:mlfGhapsLiPKDS2FZl85DYUOHw10t4eSSeIXyihxW0Y=
 github.com/aead/siphash v1.0.1/go.mod h1:Nywa3cDsYNNK3gaciGTWPwHt0wlpNV15vwmswBAUSII=
 github.com/aliyunmq/mq-http-go-sdk v0.0.0-20190911115909-92078b373925 h1:E4fXjhh0+aDi8MnW/3s9eatHhoFsFrEL279FIQxSxZE=
 github.com/aliyunmq/mq-http-go-sdk v0.0.0-20190911115909-92078b373925/go.mod h1:JYfRMQoPexERvnNNBcal0ZQ2TVQ5ialDiW9ScjaadEM=

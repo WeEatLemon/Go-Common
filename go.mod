@@ -13,6 +13,7 @@ require (
 	github.com/gogap/stack v0.0.0-20150131034635-fef68dddd4f8 // indirect
 	github.com/google/uuid v1.1.1
 	github.com/mitchellh/mapstructure v1.3.3 // indirect
+	github.com/streadway/amqp v1.0.0
 	github.com/valyala/fasthttp v1.16.0 // indirect
 	github.com/yuchenfw/gocrypt v0.0.0-20200502143421-5efbe12c6c4f
 	golang.org/x/crypto v0.0.0-20200728195943-123391ffb6de

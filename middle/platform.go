@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	Default = "Test"
+	Default = "system"
 )
 
 func (M *Middle) AuthPlatform() func(c *gin.Context) {

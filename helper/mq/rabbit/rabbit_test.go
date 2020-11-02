@@ -3,7 +3,7 @@ package RabbitMQ
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/IEatLemons/GoHelper/helper"
+	"github.com/WeEatLemon/Go-Common/helper"
 	"github.com/streadway/amqp"
 	"testing"
 	"time"

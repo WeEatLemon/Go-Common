@@ -6,7 +6,7 @@ import (
 )
 
 func Test_InitAuth(t *testing.T) {
-	secret, code := initAuth("suki@rockminer.com", "RMBackoffice")
+	secret, code := initAuth("test@test.com", "test")
 	fmt.Println("secret", secret)
 	fmt.Println("code", code)
 }

@@ -1,7 +1,7 @@
 package middle
 
 import (
-	resp "github.com/IEatLemons/GoHelper/helper/responses"
+	resp "github.com/WeEatLemon/Go-Common/helper/responses"
 	"github.com/gin-gonic/gin"
 )
 

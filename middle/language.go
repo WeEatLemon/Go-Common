@@ -1,7 +1,7 @@
 package middle
 
 import (
-	"github.com/IEatLemons/GoHelper/language"
+	"github.com/WeEatLemon/Go-Common/language"
 	"github.com/gin-gonic/gin"
 )
 

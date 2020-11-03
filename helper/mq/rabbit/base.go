@@ -3,7 +3,7 @@ package RabbitMQ
 import (
 	"errors"
 	"fmt"
-	"github.com/IEatLemons/GoHelper/helper"
+	"github.com/WeEatLemon/Go-Common/helper"
 	"github.com/streadway/amqp"
 	"log"
 	"time"

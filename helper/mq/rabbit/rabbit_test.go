@@ -4,49 +4,54 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/WeEatLemon/Go-Common/helper"
+	"github.com/WeEatLemon/Go-Common/helper/email"
+	"github.com/WeEatLemon/Go-Common/helper/email/modules"
+	"github.com/WeEatLemon/Go-Common/helper/mq/rabbit/modules"
+	"github.com/WeEatLemon/Go-Common/middle"
 	"github.com/streadway/amqp"
 	"testing"
 	"time"
 )
 
-func InitRab() {
-	Rab := InitRabbitMQ("root", "root", "127.0.0.1:5672")
+var ES *Email.Smtp
 
+func InitRab() {
+	Rab := InitRabbitMQ("test", "test", "120.24.25.253:5672")
+	//defer Rab.Destroy()
 	err := Rab.NewQueue("Notice", "Notice", "ST-Notice")
 
 	if err != nil {
 		fmt.Println("err", err)
 	} else {
 		fmt.Println("new MQ is success")
-	}
-}
 
-type TestMq struct {
-	Type       string `json:"type"`
-	Addr       string `json:"address"`
-	NoticeType string `json:"notice_type"`
+		Host := "smtp.163.com:465"
+		User := "xxx@163.com"
+		Pwd := ""
+		Reply := "xxx@163.com"
+		Email.Init(Host, User, Pwd, Reply)
+	}
 }
 
 func TestRabbitMQ_ConsumeSimple(t *testing.T) {
 	InitRab()
 	Rab := NewRabbitMQ()
 	go func() {
-		for {
+		for i := 0; i < 10; i++ {
 			PublishSimple(Rab)
-			time.Sleep(time.Second * 3)
 		}
 	}()
 	Rab.ConsumeSimple(Business)
 }
 
 func PublishSimple(Rab *RabbitMQ) {
-	Msg := TestMq{
-		Type:       "phone",
-		Addr:       helper.GetUuid(),
-		NoticeType: "Registered",
+	Msg := &RabbitMQModule.Registered{
+		User:       "269119257@qq.com",
+		Code:       helper.GetUuid(),
+		Platform:   middle.Default,
+		Expiration: time.Now().Add(time.Minute * 5),
 	}
-	m, _ := json.Marshal(Msg)
-	err := Rab.PublishSimple(string(m))
+	err := PushMsg(Rab, Msg)
 	if err != nil {
 		fmt.Println("err", err)
 	} else {
@@ -55,13 +60,20 @@ func PublishSimple(Rab *RabbitMQ) {
 }
 
 func Business(Message <-chan amqp.Delivery) {
+	ES = Email.New()
 	for Msg := range Message {
-		var data TestMq
+		var data EmailModules.Registered
 		err := json.Unmarshal(Msg.Body, &data)
 		if err != nil {
-			fmt.Println("err is", err)
+			fmt.Println("Unmarshal err is", err)
 		} else {
-			fmt.Printf("pull msg is %+v \n", data)
+			fmt.Printf("data is %+v \n", data)
+			err = ES.Send(&data)
+			if err != nil {
+				fmt.Println("Send err is", err)
+			} else {
+				fmt.Println("Send success")
+			}
 		}
 	}
 }

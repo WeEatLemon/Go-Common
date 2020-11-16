@@ -37,24 +37,24 @@ func NewRabbitMQ() *RabbitMQ {
 
 // NewRabbitMQ 创建结构体实例
 func (r *RabbitMQ) NewQueue(queueName, exchange, key string) (err error) {
-	if R.Link == "" {
+	if r.Link == "" {
 		err = errors.New("please init RabbitMQ")
 		return
 	}
-	R.QueueName = queueName
-	R.Exchange = exchange
-	R.Key = key
+	r.QueueName = queueName
+	r.Exchange = exchange
+	r.Key = key
 	// 创建rabbitmq连接
-	R.conn, err = amqp.Dial(R.Link)
+	r.conn, err = amqp.Dial(r.Link)
 	if err != nil {
 		return
 	}
 
-	R.channel, err = R.conn.Channel()
+	r.channel, err = R.conn.Channel()
 	return
 }
 
-func (r *RabbitMQ) Destory() {
+func (r *RabbitMQ) Destroy() {
 	_ = r.channel.Close()
 	_ = r.conn.Close()
 }
@@ -133,6 +133,7 @@ func (r *RabbitMQ) ConsumeSimple(Business func(<-chan amqp.Delivery)) {
 	go func() {
 		Business(messages)
 	}()
+
 	log.Printf("[*] Waiting for message, To exit press CTRL+C")
 	<-forever
 }

@@ -3,7 +3,7 @@ package middle
 import (
 	"encoding/json"
 	"fmt"
-	resp "github.com/WeEatLemon/Go-Common/helper/responses"
+	resp "github.com/IEatLemons/GoHelper/helper/responses"
 	"github.com/gin-gonic/gin"
 )
 

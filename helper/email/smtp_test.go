@@ -2,8 +2,8 @@ package Email
 
 import (
 	"fmt"
-	EmailModules "github.com/WeEatLemon/Go-Common/helper/email/modules"
-	"github.com/WeEatLemon/Go-Common/language"
+	EmailModules "github.com/IEatLemons/GoHelper/helper/email/modules"
+	"github.com/IEatLemons/GoHelper/language"
 	"testing"
 	"time"
 )

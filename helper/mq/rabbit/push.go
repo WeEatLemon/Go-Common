@@ -1,6 +1,6 @@
 package RabbitMQ
 
-import "github.com/WeEatLemon/Go-Common/helper/mq/rabbit/modules"
+import "github.com/IEatLemons/GoHelper/helper/mq/rabbit/modules"
 
 func PushMsg(R *RabbitMQ, Data RabbitMQModule.BasePush) (err error) {
 	err = Data.Verification()

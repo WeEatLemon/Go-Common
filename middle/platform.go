@@ -7,11 +7,14 @@ import (
 
 const (
 	Default = "system"
+	Sofa    = "sofa"
 )
 
-func (M *Middle) AuthPlatform() func(c *gin.Context) {
+func (M *Middle) AuthPlatform(platform string) func(c *gin.Context) {
 	return func(c *gin.Context) {
-		platform := c.GetHeader(KeyPlatform)
+		if platform == "" {
+			platform = c.GetHeader(KeyPlatform)
+		}
 		if platform == "" {
 			resp.NewResp().ParamErrRep(c, &resp.Elem{
 				Code: resp.ParameterError,
@@ -21,6 +24,7 @@ func (M *Middle) AuthPlatform() func(c *gin.Context) {
 			return
 		}
 		switch platform {
+		case Sofa:
 		case Default:
 		default:
 			resp.NewResp().ParamErrRep(c, &resp.Elem{

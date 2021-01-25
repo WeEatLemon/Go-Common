@@ -17,7 +17,7 @@ require (
 	github.com/gogap/errors v0.0.0-20200228125012-531a6449b28c
 	github.com/gogap/stack v0.0.0-20150131034635-fef68dddd4f8 // indirect
 	github.com/golang/dep v0.5.4 // indirect
-	github.com/google/uuid v1.1.1
+	github.com/google/uuid v1.1.2
 	github.com/iotaledger/iota.go v1.0.0-beta.15 // indirect
 	github.com/jmank88/nuts v0.4.0 // indirect
 	github.com/mitchellh/mapstructure v1.3.3 // indirect
@@ -28,5 +28,7 @@ require (
 	github.com/valyala/fasthttp v1.16.0 // indirect
 	github.com/yuchenfw/gocrypt v0.0.0-20200502143421-5efbe12c6c4f
 	golang.org/x/crypto v0.0.0-20200728195943-123391ffb6de
+	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
+	google.golang.org/grpc v1.35.0
 	gopkg.in/olivere/elastic.v2 v2.0.61 // indirect
 )

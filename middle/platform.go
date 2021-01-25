@@ -8,6 +8,7 @@ import (
 const (
 	Default = "system"
 	Sofa    = "sofa"
+	Firefly = "firefly"
 )
 
 func (M *Middle) AuthPlatform(platform string) func(c *gin.Context) {
@@ -25,6 +26,7 @@ func (M *Middle) AuthPlatform(platform string) func(c *gin.Context) {
 		}
 		switch platform {
 		case Sofa:
+		case Firefly:
 		case Default:
 		default:
 			resp.NewResp().ParamErrRep(c, &resp.Elem{
